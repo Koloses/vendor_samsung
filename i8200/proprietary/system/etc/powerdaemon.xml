@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MarvellPowerPolicyDaemon>
+  <Version>1.0</Version>
+  <General>
+    <poll_interval>30</poll_interval>
+    <verbosity>5</verbosity>
+    <enable_remote>1</enable_remote>
+    <remote_group>system</remote_group>
+  </General>
+  <Plugins>
+    <android enable="1">
+      
+      <event keyword="boot" intent="android.intent.action.BOOT_COMPLETED" status="1" />
+      
+      <event keyword="screen" intent="android.intent.action.SCREEN_ON" status="1" />
+      <event keyword="screen" intent="android.intent.action.SCREEN_OFF" status="0" />
+      
+      <event keyword="phone" intent="android.intent.action.PHONE_STATE" status="0">
+        <extra type="String" name="state" value="RINGING" status="1"/>
+        <extra type="String" name="state" value="OFFHOOK" status="1"/>
+        <extra type="String" name="state" value="IDLE" status="0"/>
+      </event>
+      
+      <event keyword="fm" intent="com.marvell.fmradio.ENABLE" status="1" />
+      <event keyword="fm" intent="com.marvell.fmradio.DISABLE" status="0" />
+      <event keyword="fm" intent="com.marvell.fmradio.RECORD" status="0" />
+      <event keyword="fm" intent="com.marvell.fmradio.STOPRECORD" status="1" />
+      <event keyword="cpu_hotplug" intent="com.sec.android.intent.action.CPU_BOOSTER_CORE_NUM" status="0">
+        <extra type="String" name="NUM" value="0" status="0"/>
+        <extra type="String" name="NUM" value="1" status="1"/>
+        <extra type="String" name="NUM" value="2" status="2"/>
+      </event>
+      
+      <event keyword="cpu_limit_min" intent="com.sec.android.intent.action.CPU_BOOSTER_MIN" status="0">
+        <extra type="String" name="MIN" value="0" status="0"/>
+        <extra type="String" name="MIN" value="312000" status="1"/>
+        <extra type="String" name="MIN" value="624000" status="2"/>
+        <extra type="String" name="MIN" value="1066000" status="3"/>
+        <extra type="String" name="MIN" value="1248000" status="4"/>
+      </event>
+      <event keyword="cpu_limit_max" intent="com.sec.android.intent.action.CPU_BOOSTER_MAX" status="0">
+        <extra type="String" name="MAX" value="0" status="0"/>
+        <extra type="String" name="MAX" value="312000" status="1"/>
+        <extra type="String" name="MAX" value="624000" status="2"/>
+        <extra type="String" name="MAX" value="1066000" status="3"/>
+        <extra type="String" name="MAX" value="1248000" status="4"/>
+      </event>
+      
+      <event keyword="gpu_limit_min" intent="com.sec.android.intent.action.GPU_BOOSTER_MIN" status="0">
+        <extra type="String" name="MIN" value="0" status="0"/>
+        <extra type="String" name="MIN" value="156000" status="1"/>
+        <extra type="String" name="MIN" value="312000" status="2"/>
+        <extra type="String" name="MIN" value="416000" status="3"/>
+        <extra type="String" name="MIN" value="624000" status="4"/>
+      </event>
+      <event keyword="gpu_limit_max" intent="com.sec.android.intent.action.GPU_BOOSTER_MAX" status="0">
+        <extra type="String" name="MAX" value="0" status="0"/>
+        <extra type="String" name="MAX" value="156000" status="1"/>
+        <extra type="String" name="MAX" value="312000" status="2"/>
+        <extra type="String" name="MAX" value="416000" status="3"/>
+        <extra type="String" name="MAX" value="624000" status="4"/>
+      </event>
+      
+      <event keyword="ddr_limit_min" intent="com.sec.android.intent.action.DDR_BOOSTER_MIN" status="0">
+        <extra type="String" name="MIN" value="0" status="0"/>
+        <extra type="String" name="MIN" value="156000" status="1"/>
+        <extra type="String" name="MIN" value="312000" status="2"/>
+        <extra type="String" name="MIN" value="533000" status="3"/>
+      </event>
+      <event keyword="ddr_limit_max" intent="com.sec.android.intent.action.DDR_BOOSTER_MAX" status="0">
+        <extra type="String" name="MAX" value="0" status="0"/>
+        <extra type="String" name="MAX" value="156000" status="1"/>
+        <extra type="String" name="MAX" value="312000" status="2"/>
+        <extra type="String" name="MAX" value="533000" status="3"/>
+      </event>
+      
+      <event keyword="monitor_task" intent="com.marvell.cpugadget.TASK_MONITOR">
+        <extra type="String" name="taskName" />
+      </event>
+      <monitor_config>ams_list.xml</monitor_config>
+    </android>
+    <coda enable="1" />
+    <thermal enable="1">
+      <event keyword="thermal" intent="com.marvell.thermal.STATE_CHANGED" status="0">
+        <extra type="String" name="state" value="safe" status="0"/>
+        <extra type="String" name="state" value="noticeable" status="1"/>
+        <extra type="String" name="state" value="warning" status="2"/>
+        <extra type="String" name="state" value="critical" status="3"/>
+      </event>
+    </thermal>
+    <input enable="1" />
+    <camera enable="1" />
+  </Plugins>
+  <Rules>
+    <Bootup level="0" constraint="Booting" enable="1">
+      <android_state>boot=0</android_state>
+    </Bootup>
+    <BootComplete level="0" constraint="Ondemand" enable="1">
+      <android_state>boot=1</android_state>
+    </BootComplete>
+    <Benchmark level="0" constraint="PerformanceHigh" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>benchmark</monitor_task>
+    </Benchmark>
+    <Game level="0" constraint="GamePlay" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>game</monitor_task>
+    </Game>
+    <Game2 level="0" constraint="GamePlay2" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>game2</monitor_task>
+    </Game2>
+    <Game3 level="0" constraint="GamePlay3" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>game3</monitor_task>
+    </Game3>
+    <Game4 level="0" constraint="GamePlay4" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>game4</monitor_task>
+    </Game4>
+    <Aspalt6Action level="0" constraint="LowerAction1" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>aspalt6</monitor_task>
+    </Aspalt6Action>
+    <LowPowerAction level="0" constraint="LowerAction2" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>lowpowerapp</monitor_task>
+    </LowPowerAction>
+    <BrowserAction level="0" constraint="LowerAction3" enable="1">
+      <android_state>boot=1</android_state>
+      <monitor_task>browser</monitor_task>
+    </BrowserAction>
+    <VideoOff level="0" constraint="CodaDefault" enable="1">
+      <coda_info>state=0</coda_info>
+    </VideoOff>
+    <VideoPlayLow level="0" constraint="CodaPlaybackLow" enable="1">
+      <coda_info>state=1</coda_info>
+      <coda_info>type=decode</coda_info>
+      <coda_info>resolution=vga</coda_info>
+    </VideoPlayLow>
+    <VideoPlayMid level="0" constraint="CodaPlaybackMid" enable="1">
+      <coda_info>state=1</coda_info>
+      <coda_info>type=decode</coda_info>
+      <coda_info>resolution=720p</coda_info>
+    </VideoPlayMid>
+    <VideoPlayHigh level="0" constraint="CodaPlaybackHigh" enable="1">
+      <coda_info>state=1</coda_info>
+      <coda_info>type=decode</coda_info>
+      <coda_info>resolution=1080p</coda_info>
+    </VideoPlayHigh>
+    <CamcorderLow level="0" constraint="CodaRecordLow" enable="1">
+      <coda_info>state=1</coda_info>
+      <coda_info>type=encode</coda_info>
+      <coda_info>resolution=vga</coda_info>
+    </CamcorderLow>
+    <CamcorderMid level="0" constraint="CodaRecordMid" enable="1">
+      <coda_info>state=1</coda_info>
+      <coda_info>type=encode</coda_info>
+      <coda_info>resolution=720p</coda_info>
+    </CamcorderMid>
+    <CamcorderHigh level="0" constraint="CodaRecordHigh" enable="1">
+      <coda_info>state=1</coda_info>
+      <coda_info>type=encode</coda_info>
+      <coda_info>resolution=1080p</coda_info>
+    </CamcorderHigh>
+    <AudioPlay level="0" constraint="AudioPlayOpt" enable="1">
+      <android_state>screen=0</android_state>
+    </AudioPlay>
+    <CallIn level="0" constraint="RadioIn" enable="1">
+      <android_state>fm=0</android_state>
+      <android_state>phone=1</android_state>
+    </CallIn>
+    <CallIdle level="0" constraint="RadioIdle" enable="1">
+      <android_state>fm=0</android_state>
+      <android_state>phone=0</android_state>
+    </CallIdle>
+    <Browser level="0" constraint="BrowserBoost" enable="1">
+      <android_state>booster=1</android_state>
+    </Browser>
+    <BrowserBench level="0" constraint="BrowserBenchBoost" enable="1">
+      <android_state>booster=2</android_state>
+    </BrowserBench>
+    <Rotation level="0" constraint="RotationBoost" enable="1">
+      <android_state>booster=3</android_state>
+    </Rotation>
+    <CPUMinPP1 level="0" constraint="CPU_MIN_PP1" enable="1">
+      <android_state>cpu_limit_min=1</android_state>
+    </CPUMinPP1>
+    <CPUMinPP2 level="0" constraint="CPU_MIN_PP2" enable="1">
+      <android_state>cpu_limit_min=2</android_state>
+    </CPUMinPP2>
+    <CPUMinPP3 level="0" constraint="CPU_MIN_PP3" enable="1">
+      <android_state>cpu_limit_min=3</android_state>
+    </CPUMinPP3>
+    <CPUMinPP4 level="0" constraint="CPU_MIN_PP4" enable="1">
+      <android_state>cpu_limit_min=4</android_state>
+    </CPUMinPP4>
+    <CPUMaxPP1 level="0" constraint="CPU_MAX_PP1" enable="1">
+      <android_state>cpu_limit_max=1</android_state>
+    </CPUMaxPP1>
+    <CPUMaxPP2 level="0" constraint="CPU_MAX_PP2" enable="1">
+      <android_state>cpu_limit_max=2</android_state>
+    </CPUMaxPP2>
+    <CPUMaxPP3 level="0" constraint="CPU_MAX_PP3" enable="1">
+      <android_state>cpu_limit_max=3</android_state>
+    </CPUMaxPP3>
+    <CPUMaxPP4 level="0" constraint="CPU_MAX_PP4" enable="1">
+      <android_state>cpu_limit_max=4</android_state>
+    </CPUMaxPP4>
+    <GPUMinPP1 level="0" constraint="GPU_MIN_PP1" enable="1">
+      <android_state>gpu_limit_min=1</android_state>
+    </GPUMinPP1>
+    <GPUMinPP2 level="0" constraint="GPU_MIN_PP2" enable="1">
+      <android_state>gpu_limit_min=2</android_state>
+    </GPUMinPP2>
+    <GPUMinPP3 level="0" constraint="GPU_MIN_PP3" enable="1">
+      <android_state>gpu_limit_min=3</android_state>
+    </GPUMinPP3>
+    <GPUMinPP4 level="0" constraint="GPU_MIN_PP4" enable="1">
+      <android_state>gpu_limit_min=4</android_state>
+    </GPUMinPP4>
+    <GPUMaxPP1 level="0" constraint="GPU_MAX_PP1" enable="1">
+      <android_state>gpu_limit_max=1</android_state>
+    </GPUMaxPP1>
+    <GPUMaxPP2 level="0" constraint="GPU_MAX_PP2" enable="1">
+      <android_state>gpu_limit_max=2</android_state>
+    </GPUMaxPP2>
+    <GPUMaxPP3 level="0" constraint="GPU_MAX_PP3" enable="1">
+      <android_state>gpu_limit_max=3</android_state>
+    </GPUMaxPP3>
+    <GPUMaxPP4 level="0" constraint="GPU_MAX_PP4" enable="1">
+      <android_state>gpu_limit_max=4</android_state>
+    </GPUMaxPP4>
+    <DDRMinPP1 level="0" constraint="DDR_MIN_PP1" enable="1">
+      <android_state>ddr_limit_min=1</android_state>
+    </DDRMinPP1>
+    <DDRMinPP2 level="0" constraint="DDR_MIN_PP2" enable="1">
+      <android_state>ddr_limit_min=2</android_state>
+    </DDRMinPP2>
+    <DDRMinPP3 level="0" constraint="DDR_MIN_PP3" enable="1">
+      <android_state>ddr_limit_min=3</android_state>
+    </DDRMinPP3>
+    <DDRMaxPP1 level="0" constraint="DDR_MAX_PP1" enable="1">
+      <android_state>ddr_limit_max=1</android_state>
+    </DDRMaxPP1>
+    <DDRMaxPP2 level="0" constraint="DDR_MAX_PP2" enable="1">
+      <android_state>ddr_limit_max=2</android_state>
+    </DDRMaxPP2>
+    <DDRMaxPP3 level="0" constraint="DDR_MAX_PP3" enable="1">
+      <android_state>ddr_limit_max=3</android_state>
+    </DDRMaxPP3>
+    <CameraZoom level="0" constraint="CameraZoomBoost" enable="1">
+      <camera_info>zoom=1</camera_info>
+    </CameraZoom>
+    <InputEvent level="0" constraint="OndemandHigh" enable="1">
+      <android_state>boot=1</android_state>
+      <android_state>screen=1</android_state>
+      <input_event>1</input_event>
+    </InputEvent>
+    <SingleCore level="0" constraint="FixSingleCore" enable="1">
+      <android_state>cpu_hotplug=1</android_state>
+    </SingleCore>
+    <DuelCore level="0" constraint="FixDuelCore" enable="1">
+      <android_state>cpu_hotplug=2</android_state>
+    </DuelCore>
+    <ThermalWarning level="1" constraint="OverHeat" enable="1">
+      <thermal_state>state=2</thermal_state>
+    </ThermalWarning>
+  </Rules>
+  <Constraints>
+    <Booting>
+      <cpu>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>performance</governor>
+      </cpu>
+    </Booting>
+    <PerformanceHigh>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>performance</governor>
+      </cpu>
+      <cpu>
+        <cpu_id>1</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+      <gpu>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <ddr>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </PerformanceHigh>
+    <Ondemand>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+        <sampling_rate>100000</sampling_rate>
+      </cpu>
+      <gpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </Ondemand>
+    <GamePlay>
+      <cpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>conservative</governor>
+        <down_threshold>60</down_threshold>
+        <up_threshold>95</up_threshold>
+      </cpu>
+    </GamePlay>
+    <GamePlay2>
+      <cpu>
+        <minfreq>1066000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+        <sampling_rate>200000</sampling_rate>
+      </cpu>
+     <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GamePlay2>
+    <GamePlay3>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+        <minfreq>0%</minfreq>
+        <maxfreq>80%</maxfreq>
+        <governor>conservative</governor>
+        <down_threshold>86</down_threshold>
+        <up_threshold>97</up_threshold>
+        <sampling_rate>200000</sampling_rate>
+      </cpu>
+      <cpu>
+        <cpu_id>1</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>312000</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <gpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GamePlay3>
+    <GamePlay4>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+        <minfreq>1066000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <cpu>
+        <cpu_id>1</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </GamePlay4>
+
+    <CodaDefault>
+      <shcmd>
+        <exec>echo 416000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaDefault>
+    <CodaPlaybackLow>
+      <shcmd>
+        <exec>echo 208000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaPlaybackLow>
+    <CodaPlaybackMid>
+      <gpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <shcmd>
+        <exec>echo 208000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaPlaybackMid>
+    <CodaPlaybackHigh>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <shcmd>
+        <exec>echo 208000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaPlaybackHigh>
+    <CodaRecordLow>
+      <cpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <shcmd>
+        <exec>echo 208000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaRecordLow>
+    <CodaRecordMid>
+      <cpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <shcmd>
+        <exec>echo 312000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaRecordMid>
+    <CodaRecordHigh>
+      <cpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <shcmd>
+        <exec>echo 416000 > /sys/class/devfreq/devfreq-vpu/userspace/set_freq</exec>
+      </shcmd>
+    </CodaRecordHigh>
+    <AudioPlayOpt>
+      <cpu>
+        <minfreq>25%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </AudioPlayOpt>
+    <RadioIn>
+      <shcmd>
+        <exec>echo enabled > /sys/devices/platform/pxa27x-keypad/power/wakeup</exec>
+      </shcmd>
+    </RadioIn>
+    <RadioIdle>
+      <shcmd>
+        <exec>echo disabled > /sys/devices/platform/pxa27x-keypad/power/wakeup</exec>
+      </shcmd>
+    </RadioIdle>
+    <BrowserBoost>
+      <cpu>
+        <minfreq>50%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </BrowserBoost>
+    <BrowserBenchBoost>
+      <cpu>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </BrowserBenchBoost>
+    <RotationBoost>
+      <cpu>
+        <minfreq>624000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </RotationBoost>
+    <CameraZoomBoost>
+      <cpu>
+        <minfreq>624000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </CameraZoomBoost>
+    <OverHeat>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>50%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </OverHeat>
+    <OndemandHigh>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <cpu>
+        <cpu_id>1</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </OndemandHigh>
+    <LowerAction1>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>312000</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </LowerAction1>
+    <LowerAction2>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>1066000</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <gpu>
+        <minfreq>156000</minfreq>
+        <maxfreq>416000</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>312000</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </LowerAction2>
+    <LowerAction3>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>1066000</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>533000</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+      <gpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>416000</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </LowerAction3>
+    <CPU_MIN_PP1>
+      <cpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MIN_PP1>
+    <CPU_MIN_PP2>
+      <cpu>
+        <minfreq>624000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MIN_PP2>
+    <CPU_MIN_PP3>
+      <cpu>
+        <minfreq>1066000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MIN_PP3>
+    <CPU_MIN_PP4>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+      <cpu>
+        <cpu_id>1</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </CPU_MIN_PP4>
+    <CPU_MAX_PP1>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>312000</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MAX_PP1>
+    <CPU_MAX_PP2>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>624000</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MAX_PP2>
+    <CPU_MAX_PP3>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>1066000</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MAX_PP3>
+    <CPU_MAX_PP4>
+      <cpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </cpu>
+    </CPU_MAX_PP4>
+    <GPU_MIN_PP1>
+      <gpu>
+        <minfreq>156000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MIN_PP1>
+    <GPU_MIN_PP2>
+      <gpu>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MIN_PP2>
+    <GPU_MIN_PP3>
+      <gpu>
+        <minfreq>416000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MIN_PP3>
+    <GPU_MIN_PP4>
+      <gpu>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MIN_PP4>
+    <GPU_MAX_PP1>
+      <gpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>156000</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MAX_PP1>
+    <GPU_MAX_PP2>
+      <gpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>312000</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MAX_PP2>
+    <GPU_MAX_PP3>
+      <gpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>416000</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MAX_PP3>
+    <GPU_MAX_PP4>
+      <gpu>
+        <minfreq>0%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <governor>ondemand</governor>
+      </gpu>
+    </GPU_MAX_PP4>
+    <DDR_MIN_PP1>
+      <ddr>
+        <minfreq>156000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </DDR_MIN_PP1>
+    <DDR_MIN_PP2>
+      <ddr>
+        <minfreq>312000</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </DDR_MIN_PP2>
+    <DDR_MIN_PP3>
+      <ddr>
+        <minfreq>100%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </DDR_MIN_PP3>
+    <DDR_MAX_PP1>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>156000</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </DDR_MAX_PP1>
+    <DDR_MAX_PP2>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>312000</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </DDR_MAX_PP2>
+    <DDR_MAX_PP3>
+      <ddr>
+        <minfreq>0%</minfreq>
+        <maxfreq>100%</maxfreq>
+        <interval>50</interval>
+        <governor>simple_ondemand</governor>
+      </ddr>
+    </DDR_MAX_PP3>
+    <FixSingleCore>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+    </FixSingleCore>
+    <FixDuelCore>
+      <cpu>
+        <cpu_id>0</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+      <cpu>
+        <cpu_id>1</cpu_id>
+        <hotplug>online</hotplug>
+      </cpu>
+    </FixDuelCore>
+  </Constraints>
+</MarvellPowerPolicyDaemon>
