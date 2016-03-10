@@ -64,7 +64,6 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/bin/tel_launch_no_gui.sh:system/bin/tel_launch_no_gui.sh \
     vendor/samsung/i8200/proprietary/system/bin/telmon:system/bin/telmon \
     vendor/samsung/i8200/proprietary/system/bin/unload_8787.sh:system/bin/unload_8787.sh \
-    vendor/samsung/i8200/proprietary/system/bin/usr_path_ctrl:system/bin/usr_path_ctrl \
     vendor/samsung/i8200/proprietary/system/bin/vcm:system/bin/vcm \
     vendor/samsung/i8200/proprietary/system/bin/vt_test:system/bin/vt_test \
     vendor/samsung/i8200/proprietary/system/etc/bluetooth/bt_secure_manager_app_pub_key:system/etc/bluetooth/bt_secure_manager_app_pub_key \
@@ -74,39 +73,25 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/bt_init_cfg.conf:system/etc/firmware/mrvl/bt_init_cfg.conf \
     vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/cal_data.conf:system/etc/firmware/mrvl/cal_data.conf \
     vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/reg_alpha2:system/etc/firmware/mrvl/reg_alpha2 \
-    vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/sd8777_uapsta.bin:system/etc/firmware/mrvl/sd8777_uapsta.bin \
     vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/sd8787_uapsta.bin:system/etc/firmware/mrvl/sd8787_uapsta.bin \
-    vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/SDIO8777_SDIO_SDIO.bin:system/etc/firmware/mrvl/SDIO8777_SDIO_SDIO.bin \
     vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/w8787_wlan_SDIO_bt_SDIO.bin:system/etc/firmware/mrvl/w8787_wlan_SDIO_bt_SDIO.bin \
     vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/WlanCalData_ext.conf:system/etc/firmware/mrvl/WlanCalData_ext.conf \
-    vendor/samsung/i8200/proprietary/system/etc/firmware/mrvl/WlanCalData_ext.conf_0:system/etc/firmware/mrvl/WlanCalData_ext.conf_0 \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    vendor/samsung/i8200/proprietary/system/etc/permissions/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     vendor/samsung/i8200/proprietary/system/etc/ams_list.xml:system/etc/ams_list.xml \
     vendor/samsung/i8200/proprietary/system/etc/asound.conf:system/etc/asound.conf \
     vendor/samsung/i8200/proprietary/system/etc/audio_basic_element.xml:system/etc/audio_basic_element.xml \
-    vendor/samsung/i8200/proprietary/system/etc/audio_coeff_config.xml:system/etc/audio_coeff_config.xml \
-    vendor/samsung/i8200/proprietary/system/etc/audio_effect_config.xml:system/etc/audio_effect_config.xml \
     vendor/samsung/i8200/proprietary/system/etc/audio_gain_config.xml:system/etc/audio_gain_config.xml \
     vendor/samsung/i8200/proprietary/system/etc/audio_path_config.xml:system/etc/audio_path_config.xml \
     vendor/samsung/i8200/proprietary/system/etc/audio_swvol_calibration_def.xml:system/etc/audio_swvol_calibration_def.xml \
     vendor/samsung/i8200/proprietary/system/etc/audio_swvol_config.xml:system/etc/audio_swvol_config.xml \
     vendor/samsung/i8200/proprietary/system/etc/audio_swvol_element.xml:system/etc/audio_swvol_element.xml \
     vendor/samsung/i8200/proprietary/system/etc/back_camera_scene.cfg:system/etc/back_camera_scene.cfg \
-    vendor/samsung/i8200/proprietary/system/etc/backup.conf:system/etc/backup.conf \
     vendor/samsung/i8200/proprietary/system/etc/camera_profiles.xml:system/etc/camera_profiles.xml \
     vendor/samsung/i8200/proprietary/system/etc/common_scene_tuning.data:system/etc/common_scene_tuning.data \
     vendor/samsung/i8200/proprietary/system/etc/dbus.conf:system/etc/dbus.conf \
@@ -117,14 +102,12 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/etc/mrvl_agps_default.conf:system/etc/mrvl_agps_default.conf \
     vendor/samsung/i8200/proprietary/system/etc/mrvl_gps_platform.conf:system/etc/mrvl_gps_platform.conf \
     vendor/samsung/i8200/proprietary/system/etc/MSLConfig.txt:system/etc/MSLConfig.txt \
-    vendor/samsung/i8200/proprietary/system/etc/ov5647_scene_tuning.data:system/etc/ov5647_scene_tuning.data \
     vendor/samsung/i8200/proprietary/system/etc/ov5647_still_tuning.data:system/etc/ov5647_still_tuning.data \
     vendor/samsung/i8200/proprietary/system/etc/ov5647_video_tuning.data:system/etc/ov5647_video_tuning.data \
     vendor/samsung/i8200/proprietary/system/etc/ov8825_still_tuning.data:system/etc/ov8825_still_tuning.data \
     vendor/samsung/i8200/proprietary/system/etc/ov8825_video_tuning.data:system/etc/ov8825_video_tuning.data \
     vendor/samsung/i8200/proprietary/system/etc/plmn_se13.bin:system/etc/plmn_se13.bin \
     vendor/samsung/i8200/proprietary/system/etc/powerdaemon.xml:system/etc/powerdaemon.xml \
-    vendor/samsung/i8200/proprietary/system/etc/powerdaemon_z3.xml:system/etc/powerdaemon_z3.xml \
     vendor/samsung/i8200/proprietary/system/etc/pxa_testcfg.ini:system/etc/pxa_testcfg.ini \
     vendor/samsung/i8200/proprietary/system/etc/rom.bin:system/etc/rom.bin \
     vendor/samsung/i8200/proprietary/system/etc/sensor_config.xml:system/etc/sensor_config.xml \
@@ -143,15 +126,13 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/lib/hw/audio_path.voip.mrvl.so:system/lib/hw/audio_path.voip.mrvl.so \
     vendor/samsung/i8200/proprietary/system/lib/hw/audio_path.vt.mrvl.so:system/lib/hw/audio_path.vt.mrvl.so \
     vendor/samsung/i8200/proprietary/system/lib/hw/camera.mrvl.so:system/lib/hw/camera.mrvl.so \
-    vendor/samsung/i8200/proprietary/system/lib/hw/consumerir.mrvl.so:system/lib/hw/consumerir.mrvl.so \
     vendor/samsung/i8200/proprietary/system/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
     vendor/samsung/i8200/proprietary/system/lib/hw/gralloc.mrvl.so:system/lib/hw/gralloc.mrvl.so \
-    vendor/samsung/i8200/proprietary/system/lib/hw/hwcomposer.mrvl.so:system/lib/hw/hwcomposer.mrvl.so \
     vendor/samsung/i8200/proprietary/system/lib/hw/sensors.mrvl.so:system/lib/hw/sensors.mrvl.so \
     vendor/samsung/i8200/proprietary/system/lib/soundfx/libmrvlpreprocessing.so:system/lib/soundfx/libmrvlpreprocessing.so \
     vendor/samsung/i8200/proprietary/system/lib/lib_SA_GoogleFX_ver119h.so:system/lib/lib_SA_GoogleFX_ver119h.so \
     vendor/samsung/i8200/proprietary/system/lib/lib_Samsung_Resampler.so:system/lib/lib_Samsung_Resampler.so \
-    vendor/samsung/i8200/proprietary/system/lib/lib_Samsung_SB_AM_for_ICS_v04004.so:system/lib/lib_Samsung_SB_AM_for_ICS_v04004.so \
+    vendor/samsung/i8200/proprietary/system/lib/lib_Samsung_SB_AM_for_ICS_v03008.so:system/lib/lib_Samsung_SB_AM_for_ICS_v04004.so \
     vendor/samsung/i8200/proprietary/system/lib/lib_SamsungRec_V03011b.so:system/lib/lib_SamsungRec_V03011b.so \
     vendor/samsung/i8200/proprietary/system/lib/libacm.so:system/lib/libacm.so \
     vendor/samsung/i8200/proprietary/system/lib/libacoustic.so:system/lib/libacoustic.so \
@@ -196,19 +177,11 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/lib/libGLESv2SC.so:system/lib/libGLESv2SC.so \
     vendor/samsung/i8200/proprietary/system/lib/libgpucsc.so:system/lib/libgpucsc.so \
     vendor/samsung/i8200/proprietary/system/lib/libgputex.so:system/lib/libgputex.so \
-    vendor/samsung/i8200/proprietary/system/lib/libhpbsnmp.so:system/lib/libhpbsnmp.so \
-    vendor/samsung/i8200/proprietary/system/lib/libhpcurl.so:system/lib/libhpcurl.so \
-    vendor/samsung/i8200/proprietary/system/lib/libhpexpat.so:system/lib/libhpexpat.so \
-    vendor/samsung/i8200/proprietary/system/lib/libhpmpcrypto.so:system/lib/libhpmpcrypto.so \
-    vendor/samsung/i8200/proprietary/system/lib/libhpmpssl.so:system/lib/libhpmpssl.so \
     vendor/samsung/i8200/proprietary/system/lib/libHWComposerGC.so:system/lib/libHWComposerGC.so \
-    vendor/samsung/i8200/proprietary/system/lib/libion_pxa.so:system/lib/libion_pxa.so \
     vendor/samsung/i8200/proprietary/system/lib/libionhelper.so:system/lib/libionhelper.so \
     vendor/samsung/i8200/proprietary/system/lib/libippimgp.so:system/lib/libippimgp.so \
     vendor/samsung/i8200/proprietary/system/lib/libippsp.so:system/lib/libippsp.so \
     vendor/samsung/i8200/proprietary/system/lib/libippvp.so:system/lib/libippvp.so \
-    vendor/samsung/i8200/proprietary/system/lib/liblvvefs.so:system/lib/liblvvefs.so \
-    vendor/samsung/i8200/proprietary/system/lib/liblvvewrapper.so:system/lib/liblvvewrapper.so \
     vendor/samsung/i8200/proprietary/system/lib/libmarvell-ril.so:system/lib/libmarvell-ril.so \
     vendor/samsung/i8200/proprietary/system/lib/libmiscgen.so:system/lib/libmiscgen.so \
     vendor/samsung/i8200/proprietary/system/lib/libMrvlOmx.so:system/lib/libMrvlOmx.so \
@@ -217,16 +190,12 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/lib/libparseTim.so:system/lib/libparseTim.so \
     vendor/samsung/i8200/proprietary/system/lib/libphycontmem.so:system/lib/libphycontmem.so \
     vendor/samsung/i8200/proprietary/system/lib/libphysicsmsc.so:system/lib/libphysicsmsc.so \
-    vendor/samsung/i8200/proprietary/system/lib/libpmemhelper.so:system/lib/libpmemhelper.so \
     vendor/samsung/i8200/proprietary/system/lib/libPowerSetting.so:system/lib/libPowerSetting.so \
-    vendor/samsung/i8200/proprietary/system/lib/libppeffectLH.so:system/lib/libppeffectLH.so \
     vendor/samsung/i8200/proprietary/system/lib/libquramagifencoder.so:system/lib/libquramagifencoder.so \
     vendor/samsung/i8200/proprietary/system/lib/libquramimagecodec.so:system/lib/libquramimagecodec.so \
     vendor/samsung/i8200/proprietary/system/lib/libSamsungPkcs11Wrapper.so:system/lib/libSamsungPkcs11Wrapper.so \
     vendor/samsung/i8200/proprietary/system/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
     vendor/samsung/i8200/proprietary/system/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
-    vendor/samsung/i8200/proprietary/system/lib/libscreenrecorder.so:system/lib/libscreenrecorder.so \
-    vendor/samsung/i8200/proprietary/system/lib/libSDRMInvLH.so:system/lib/libSDRMInvLH.so \
     vendor/samsung/i8200/proprietary/system/lib/libsecnativefeature.so:system/lib/libsecnativefeature.so \
     vendor/samsung/i8200/proprietary/system/lib/libsecril-client.so:system/lib/libsecril-client.so \
     vendor/samsung/i8200/proprietary/system/lib/libserialport.so:system/lib/libserialport.so \
@@ -237,7 +206,6 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/lib/libstagefright_mrvl_extractor.so:system/lib/libstagefright_mrvl_extractor.so \
     vendor/samsung/i8200/proprietary/system/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \
     vendor/samsung/i8200/proprietary/system/lib/libsthmb.so:system/lib/libsthmb.so \
-    vendor/samsung/i8200/proprietary/system/lib/libsysfs.so:system/lib/libsysfs.so \
     vendor/samsung/i8200/proprietary/system/lib/libsysfs_attribute.so:system/lib/libsysfs_attribute.so \
     vendor/samsung/i8200/proprietary/system/lib/libsystem_server.so:system/lib/libsystem_server.so \
     vendor/samsung/i8200/proprietary/system/lib/libusbsetting.so:system/lib/libusbsetting.so \
@@ -251,11 +219,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/usr/idc/elan-ts.idc:system/usr/idc/elan-ts.idc \
     vendor/samsung/i8200/proprietary/system/usr/idc/ft5306-ts.idc:system/usr/idc/ft5306-ts.idc \
     vendor/samsung/i8200/proprietary/system/usr/keychars/pxa27x-keypad.kcm:system/usr/keychars/pxa27x-keypad.kcm \
-    vendor/samsung/i8200/proprietary/system/usr/keylayout/88pm800_hook_vol.kl:system/usr/keylayout/88pm800_hook_vol.kl \
-    vendor/samsung/i8200/proprietary/system/usr/keylayout/88pm80x_on.kl:system/usr/keylayout/88pm80x_on.kl \
-    vendor/samsung/i8200/proprietary/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     vendor/samsung/i8200/proprietary/system/usr/keylayout/pxa27x-keypad.kl:system/usr/keylayout/pxa27x-keypad.kl \
-    vendor/samsung/i8200/proprietary/system/usr/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
     vendor/samsung/i8200/proprietary/system/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
     vendor/samsung/i8200/proprietary/system/usr/lib/alsa-lib/libasound_module_ctl_codec.so:system/usr/lib/alsa-lib/libasound_module_ctl_codec.so \
     vendor/samsung/i8200/proprietary/system/usr/lib/alsa-lib/libasound_module_ctl_phone.so:system/usr/lib/alsa-lib/libasound_module_ctl_phone.so \
@@ -278,11 +242,4 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/i8200/proprietary/system/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
     vendor/samsung/i8200/proprietary/system/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
     vendor/samsung/i8200/proprietary/system/vendor/lib/hw/lights.mrvl.so:system/vendor/lib/hw/lights.mrvl.so \
-    vendor/samsung/i8200/proprietary/system/xbin/iwconfig:system/xbin/iwconfig \
-    vendor/samsung/i8200/proprietary/system/xbin/iwevent:system/xbin/iwevent \
-    vendor/samsung/i8200/proprietary/system/xbin/iwgetid:system/xbin/iwgetid \
-    vendor/samsung/i8200/proprietary/system/xbin/iwlist:system/xbin/iwlist \
-    vendor/samsung/i8200/proprietary/system/xbin/iwpriv:system/xbin/iwpriv \
-    vendor/samsung/i8200/proprietary/system/xbin/iwspy:system/xbin/iwspy \
-    vendor/samsung/i8200/proprietary/system/xbin/zip:system/xbin/zip \
     vendor/samsung/i8200/proprietary/system/xbin/zipalign:system/xbin/zipalign
